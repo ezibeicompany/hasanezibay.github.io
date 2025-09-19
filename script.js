@@ -1,33 +1,27 @@
-// Örnek blog yazıları
+// Blog yazıları
 const posts = [
-    {
-        title: "Yazılım Geliştirme Hakkında",
-        content: "Yazılım geliştirme süreci, problem çözme ve yaratıcılığı birleştiren bir süreçtir."
-    },
-    {
-        title: "Girişimcilik Deneyimlerim",
-        content: "Girişimcilik, risk almayı ve sürekli öğrenmeyi gerektirir."
-    },
-    {
-        title: "Teknoloji Trendleri 2025",
-        content: "Yapay zeka, blockchain ve IoT 2025’te hayatımızı daha fazla şekillendirecek."
-    }
+  { title: "Yazılım Geliştirme", content: "Kodlama, hayal gücünü gerçeğe dönüştürmektir." },
+  { title: "Girişimcilik Yolculuğum", content: "Her gün yeni bir fırsat demektir." },
+  { title: "Teknoloji Trendleri 2025", content: "AI, blockchain ve IoT hayatımızı değiştirecek." }
 ];
 
-// Blog yazılarını sayfaya ekleme
-const postsContainer = document.getElementById("posts");
+// Blog sayfasında yazıları listele
+if (document.getElementById("posts")) {
+  const container = document.getElementById("posts");
+  posts.forEach(p => {
+    const div = document.createElement("div");
+    div.classList.add("post");
+    div.innerHTML = `<h3>${p.title}</h3><p>${p.content}</p>`;
+    container.appendChild(div);
+  });
+}
 
-posts.forEach(post => {
-    const postDiv = document.createElement("div");
-    postDiv.classList.add("post");
-    postDiv.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-    postsContainer.appendChild(postDiv);
-});
-
-// Form gönderme işlemi
+// İletişim formu
 const contactForm = document.getElementById("contactForm");
-contactForm.addEventListener("submit", function(e){
+if (contactForm) {
+  contactForm.addEventListener("submit", e => {
     e.preventDefault();
-    alert("Mesajınız gönderildi!");
+    alert("Mesajınız gönderildi! Teşekkürler 🙌");
     contactForm.reset();
-});
+  });
+}
