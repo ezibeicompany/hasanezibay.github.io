@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Paneli | Hasan Ezibay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Blog Admin Paneli</h1>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="admin.html">Admin Paneli</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Yeni Yazı Ekle</h2>
+    <form id="postForm">
+      <input type="text" id="title" placeholder="Başlık" required><br><br>
+      <textarea id="content" placeholder="İçerik" rows="6" required></textarea><br><br>
+      <button type="submit">Kaydet</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('postForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+
+      const newPost = {
+        id: Date.now(),
+        title: title,
+        date: new Date().toISOString().split('T')[0],
+        content: content
+      };
+
+      let localPosts = JSON.parse(localStorage.getItem('localPosts')) || [];
+      localPosts.push(newPost);
+      localStorage.setItem('localPosts', JSON.stringify(localPosts));
+
+      alert("Yazı başarıyla eklendi!");
+      document.getElementById('postForm').reset();
+    });
+  </script>
+</body>
+</html>
