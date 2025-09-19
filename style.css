@@ -1,19 +1,43 @@
+/* Varsayılan (light mode) renkler */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --header-bg: #0077cc;
+  --header-text: #fff;
+  --card-bg: #fff;
+  --footer-bg: #333;
+  --footer-text: #fff;
+}
+
+/* Dark mode renkleri */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --header-bg: #1f1f1f;
+  --header-text: #f5f5f5;
+  --card-bg: #1e1e1e;
+  --footer-bg: #000;
+  --footer-text: #ccc;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #f5f5f5;
-  color: #333;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 
+/* Header */
 header {
-  background: #0077cc;
-  color: white;
+  background: var(--header-bg);
+  color: var(--header-text);
   padding: 15px;
   text-align: center;
 }
 
 header nav a {
-  color: white;
+  color: var(--header-text);
   margin: 0 10px;
   text-decoration: none;
 }
@@ -22,18 +46,39 @@ header nav a:hover {
   text-decoration: underline;
 }
 
+/* Dark mode butonu */
+#darkModeToggle {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: transparent;
+  border: 2px solid var(--header-text);
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: var(--header-text);
+  cursor: pointer;
+}
+
+/* Bölümler */
 section {
   max-width: 800px;
   margin: 30px auto;
-  background: white;
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
 }
 
+/* Form */
 form input, form textarea {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 form button {
@@ -42,16 +87,36 @@ form button {
   border: none;
   padding: 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 form button:hover {
   background: #005fa3;
 }
 
+/* Footer */
 footer {
   text-align: center;
-  background: #333;
-  color: white;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   padding: 15px;
   margin-top: 20px;
+}
+
+/* 📱 Mobil uyum (Responsive) */
+@media (max-width: 768px) {
+  header nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  section {
+    margin: 15px;
+    padding: 15px;
+  }
+  #darkModeToggle {
+    top: 10px;
+    right: 10px;
+    padding: 3px 8px;
+  }
 }
