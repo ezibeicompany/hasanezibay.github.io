@@ -1,74 +1,53 @@
-// JSON + LocalStorage'dan yazıları getir
-async function getPosts() {
-  try {
-    const res = await fetch('posts.json');
-    const posts = await res.json();
-
-    // LocalStorage yazıları
-    const localPosts = JSON.parse(localStorage.getItem('localPosts')) || [];
-
-    // Hepsini birleştir (önce JSON, sonra LocalStorage)
-    return [...posts, ...localPosts];
-  } catch (error) {
-    console.error("posts.json yüklenemedi:", error);
-    return JSON.parse(localStorage.getItem('localPosts')) || [];
-  }
-}
-
-// Ana sayfada yazıları listele
-async function showPosts() {
-  const posts = await getPosts();
-  const container = document.getElementById('posts');
-  if (!container) return;
-
-  if (posts.length === 0) {
-    container.innerHTML = "<p>Henüz yazı eklenmemiş.</p>";
-    return;
-  }
-
-  posts.forEach(post => {
-    const div = document.createElement('div');
-    div.classList.add('post');
-    div.innerHTML = `
-      <h2><a href="post.html?id=${post.id}">${post.title}</a></h2>
-      <small>${post.date}</small>
-      <p>${post.content.substring(0, 120)}...</p>
-    `;
-    container.appendChild(div);
-  });
-}
-
-// Detay sayfasında tek yazıyı göster
-async function showPostDetail() {
-  const container = document.getElementById('post-detail');
-  if (!container) return;
-
-  const params = new URLSearchParams(window.location.search);
-  const postId = parseInt(params.get('id'));
-  if (!postId) {
-    container.innerHTML = "<p>Yazı bulunamadı.</p>";
-    return;
-  }
-
-  const posts = await getPosts();
-  const post = posts.find(p => p.id === postId);
-  if (!post) {
-    container.innerHTML = "<p>Yazı bulunamadı.</p>";
-    return;
-  }
-
-  container.innerHTML = `
-    <h2>${post.title}</h2>
-    <small>${post.date}</small>
-    <p>${post.content}</p>
-  `;
-}
-
-// Sayfa yüklenince hangi fonksiyon çalışacak kontrol et
-window.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('posts')) {
-    showPosts();
-  } else if (document.getElementById('post-detail')) {
-    showPostDetail();
+// Sayfaya göre işlem yap
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("postForm")) {
+    // Admin sayfası
+    document.getElementById("postForm").addEventListener("submit", savePost);
+  } else if (document.getElementById("blogPosts")) {
+    // Ana sayfa
+    displayPosts();
   }
 });
+
+// Yazıyı kaydet
+function savePost(e) {
+  e.preventDefault();
+
+  let title = document.getElementById("title").value;
+  let content = document.getElementById("content").value;
+
+  let newPost = {
+    title: title,
+    content: content,
+    date: new Date().toLocaleString()
+  };
+
+  let posts = JSON.parse(localStorage.getItem("posts")) || [];
+  posts.unshift(newPost); // Yeni yazı en başa ekleniyor
+  localStorage.setItem("posts", JSON.stringify(posts));
+
+  alert("Yazı başarıyla eklendi!");
+  document.getElementById("postForm").reset();
+}
+
+// Yazıları göster
+function displayPosts() {
+  let posts = JSON.parse(localStorage.getItem("posts")) || [];
+  let blogPosts = document.getElementById("blogPosts");
+
+  if (posts.length === 0) {
+    blogPosts.innerHTML = "<p>Henüz yazı eklenmedi.</p>";
+    return;
+  }
+
+  blogPosts.innerHTML = "";
+  posts.forEach(post => {
+    let article = document.createElement("article");
+    article.innerHTML = `
+      <h2>${post.title}</h2>
+      <small>${post.date}</small>
+      <p>${post.content}</p>
+    `;
+    blogPosts.appendChild(article);
+  });
+}
