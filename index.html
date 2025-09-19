@@ -5,35 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasan Ezibay Blog</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; color: #333; }
-        header { text-align: center; margin-bottom: 50px; }
-        h1 { color: #0073e6; }
-        a { color: #0073e6; text-decoration: none; }
+        /* Genel Stil */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: #0073e6; }
         a:hover { text-decoration: underline; }
-        article { background-color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-        nav { margin-bottom: 30px; text-align: center; }
+
+        /* Header */
+        header { background-color: #0073e6; color: white; padding: 60px 20px; text-align: center; }
+        header h1 { font-size: 3em; margin-bottom: 10px; }
+        header p { font-size: 1.2em; }
+
+        /* Navigation */
+        nav { text-align: center; margin: 30px 0; }
+        nav a { margin: 0 15px; font-weight: bold; }
+
+        /* Main Content */
+        main { max-width: 900px; margin: auto; padding: 20px; }
+
+        article { background-color: white; padding: 30px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        article h2 { color: #0073e6; margin-bottom: 15px; }
+        article p { margin-bottom: 15px; }
+
+        /* Footer */
+        footer { text-align: center; padding: 30px 20px; background-color: #343a40; color: white; margin-top: 50px; }
+        footer a { color: #ffc107; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            nav a { display: block; margin: 10px 0; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header>
         <h1>Hasan Ezibay Blog</h1>
-        <p>Teknoloji, yazılım ve AI üzerine yazılar</p>
+        <p>Teknoloji, yazılım ve yapay zekâ üzerine yazılar</p>
     </header>
 
+    <!-- Navigation -->
     <nav>
-        <a href="index.html">Ana Sayfa</a> | 
-        <a href="ikinci-yazi.html">İkinci Yazım</a>
+        <a href="#yazi1">İlk Yazı</a>
+        <a href="#yazi2">İkinci Yazı</a>
+        <a href="https://github.com/HasanEzibay" target="_blank">Projelerim</a>
     </nav>
 
-    <article>
-        <h2>İlk Blog Yazım</h2>
-        <p>Merhaba! Bu benim GitHub Pages üzerinden yayınladığım ilk blog yazım. Burada projelerim ve teknoloji üzerine düşüncelerimi paylaşacağım.</p>
-        <a href="https://github.com/HasanEzibay">Projelerimi gör</a>
-    </article>
+    <!-- Main Content -->
+    <main>
+        <!-- Yazı 1 -->
+        <article id="yazi1">
+            <h2>İlk Blog Yazım</h2>
+            <p>Merhaba! Bu benim GitHub Pages üzerinden yayınladığım ilk blog yazım. Burada projelerim ve teknoloji üzerine düşüncelerimi paylaşacağım.</p>
+            <p>Daha fazla yazımı görmek için sayfanın altındaki diğer yazılara göz atabilirsiniz.</p>
+        </article>
 
-    <article>
-        <h2>İkinci Blog Yazısına Geç</h2>
-        <p>Daha fazla yazıyı görmek için <a href="ikinci-yazi.html">buraya tıklayın</a>.</p>
-    </article>
+        <!-- Yazı 2 -->
+        <article id="yazi2">
+            <h2>GitHub Pages ile Blog Oluşturmak</h2>
+            <p>GitHub Pages ile kendi blogunu HTML kullanarak hızlıca yayınlayabilirsin. Böylece projelerini, yazılarını ve fikirlerini paylaşabilirsin.</p>
+            <p>Projelerime GitHub üzerinden ulaşmak için <a href="https://github.com/HasanEzibay" target="_blank">tıklayın</a>.</p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Hasan Ezibay | <a href="https://github.com/HasanEzibay" target="_blank">GitHub</a></p>
+    </footer>
+
 </body>
 </html>
