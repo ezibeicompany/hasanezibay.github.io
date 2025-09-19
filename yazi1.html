@@ -1,47 +1,69 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlk Yazım - Hasan Ezibay Blog</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f9fa; color:#333; }
-        header { background:#0073e6; color:white; text-align:center; padding:50px 20px; }
-        header h1 { font-size:2.5em; margin-bottom:10px; }
-        nav { background:#005bb5; padding:15px; text-align:center; }
-        nav a { color:white; margin:0 15px; font-weight:bold; text-decoration:none; }
-        nav a:hover { text-decoration:underline; }
-        main { max-width:900px; margin:40px auto; padding:0 20px; }
-        article { background:white; padding:25px; margin-bottom:25px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
-        footer { text-align:center; padding:30px 20px; background:#343a40; color:white; margin-top:50px; }
-        footer a { color:#ffc107; }
-        @media(max-width:600px){ header h1{font-size:2em;} nav a{display:block;margin:10px 0;} }
-    </style>
-</head>
-<body>
+/* Genel Ayarlar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
 
-<header>
-    <h1>İlk Blog Yazım</h1>
-    <p>GitHub Pages ile kendi blogunu oluşturmak</p>
-</header>
+/* Header */
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
 
-<nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="yazi1.html">İlk Yazı</a>
-    <a href="yazi2.html">İkinci Yazı</a>
-</nav>
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
 
-<main>
-    <article>
-        <h2>Blog Oluşturma Adımları</h2>
-        <p>GitHub Pages ile hızlıca blog oluşturabilir ve HTML kullanarak yazılar yayınlayabilirsin. Bu sayede projelerini, yazılarını ve fikirlerini paylaşabilirsin.</p>
-        <p>Projelerime GitHub üzerinden ulaşmak için <a href="https://github.com/HasanEzibay" target="_blank">tıklayın</a>.</p>
-    </article>
-</main>
+header nav a:hover {
+    text-decoration: underline;
+}
 
-<footer>
-    <p>© 2025 Hasan Ezibay | <a href="https://github.com/HasanEzibay" target="_blank">GitHub</a></p>
-</footer>
+/* Bölümler */
+section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-</body>
-</html>
+/* Form */
+form input, form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #005fa3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
